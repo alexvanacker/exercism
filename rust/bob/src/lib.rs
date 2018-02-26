@@ -27,8 +27,8 @@ pub fn reply(message: &str) -> &str {
 }
 
 pub fn is_yelling(message: &str) -> bool {
-    let uppercase = message.to_uppercase();
-    uppercase == message && contains_letters(message)
+    let mut letters = message.chars().filter(|c| c.is_alphabetic());
+    message.chars().any(|c| c.is_alphabetic()) && letters.all(|c| c.is_uppercase())
 }
 
 pub fn is_question(message: &str) -> bool {
