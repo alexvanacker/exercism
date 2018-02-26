@@ -7,8 +7,7 @@ pub fn reply(message: &str) -> &str {
     }
 
     // Yelling = All Caps 
-    let uppercase = trimmed.to_uppercase();
-    let is_yelling = uppercase == trimmed && contains_letters(trimmed);
+    let is_yelling = is_yelling(trimmed);
 
     // Question = "?" at the end
     let is_question = is_question(trimmed);
@@ -25,6 +24,11 @@ pub fn reply(message: &str) -> &str {
     }
 
     return "Whatever.";
+}
+
+pub fn is_yelling(message: &str) -> bool {
+    let uppercase = message.to_uppercase();
+    uppercase == message && contains_letters(message)
 }
 
 pub fn is_question(message: &str) -> bool {
