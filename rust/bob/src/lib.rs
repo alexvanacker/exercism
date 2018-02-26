@@ -6,24 +6,12 @@ pub fn reply(message: &str) -> &str {
         return "Fine. Be that way!";
     }
 
-    // Yelling = All Caps 
-    let is_yelling = is_yelling(trimmed);
-
-    // Question = "?" at the end
-    let is_question = is_question(trimmed);
-
-    if is_question && is_yelling {
-        return "Calm down, I know what I'm doing!";
+    match( is_yelling(trimmed), is_question(trimmed)) {
+        (true, true) => "Calm down, I know what I'm doing!",
+        (true, false) => "Whoa, chill out!",
+        (false, true) => "Sure.",
+        (false, false) => "Whatever."
     }
-    if is_yelling {
-        return "Whoa, chill out!";
-    }
-
-    if is_question {
-        return "Sure.";
-    }
-
-    return "Whatever.";
 }
 
 pub fn is_yelling(message: &str) -> bool {
