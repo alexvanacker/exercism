@@ -11,7 +11,7 @@ pub fn reply(message: &str) -> &str {
     let is_yelling = uppercase == trimmed && contains_letters(trimmed);
 
     // Question = "?" at the end
-    let is_question = trimmed.chars().last() == Some('?');
+    let is_question = is_question(trimmed);
 
     if is_question && is_yelling {
         return "Calm down, I know what I'm doing!";
@@ -25,6 +25,10 @@ pub fn reply(message: &str) -> &str {
     }
 
     return "Whatever.";
+}
+
+pub fn is_question(message: &str) -> bool {
+    return message.ends_with('?');
 }
 
 pub fn contains_letters(message: &str) -> bool {
